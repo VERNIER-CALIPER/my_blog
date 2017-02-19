@@ -1,0 +1,5 @@
+qlite3
+__pychache__
+*.pyc
+*.swp
+*.log
