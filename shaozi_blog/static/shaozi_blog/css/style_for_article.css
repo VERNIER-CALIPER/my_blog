@@ -1,0 +1,39 @@
+.article{
+  color: #333;
+}
+
+.article h1{
+margin-top:40px;
+margin-bottom:40px;
+ }
+ .article h2{
+ font-size: 25px;
+ margin-top: 30px;
+ margin-bottom: 20px;
+ color: gray;
+ }
+.article p{
+  font-size: 20px;
+  text-indent: 2em;
+ 
+}
+.label.for_block {
+font-size: 150%;
+display: block;
+float: left;
+margin-right: 1em;
+margin-top: 0.3em;
+}
+
+.margin_bottom_for_lebal{
+margin-bottom: 40px;
+}
+
+code{
+font-size: 20px;
+}
+img{
+margin-bottom: 20px;
+}
+.well{
+margin-bottom: 20px;}

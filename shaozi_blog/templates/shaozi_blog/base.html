@@ -1,0 +1,102 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+<title>blog</title>
+
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<meta name="generator" content="Bluefish 2.2.7" >
+<meta name="author" content="ss" >
+<meta name="keywords" content="">
+<meta name="description" content="">
+<meta name="ROBOTS" content="NOINDEX, NOFOLLOW">
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<meta http-equiv="content-type" content="application/xhtml+xml; charset=UTF-8">
+<meta http-equiv="content-style-type" content="text/css">
+<link rel="stylesheet" href="{% static 'shaozi_blog/css/bootstrap.css' %}"  type="text/css">	
+<link rel="stylesheet" href="{% static 'shaozi_blog/css/base.css' %}" type="text/css">
+{% autoescape off %}
+{% block different_css %} {% endblock %}
+{% endautoescape %}
+<!-- don't sure wether escape is needed -->
+
+</head>
+
+<body {% block prettyPrint_onload %}{% endblock %}>
+  <script src="http://cdn.bootcss.com/jquery/3.1.1/jquery.js"></script>
+  <script src="{% static 'shaozi_blog/js/bootstrap.min.js' %}"></script>
+  {% block prettyPrint_script %}{% endblock %}
+  <div class="navbar navbar-inverse nomargin">
+    <div class="container">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle " data-toggle="collapse" data-target="#blog_navbar_collapse" aria-expanded="false">
+          <span class="icon-bar"></span>  
+          <span class="icon-bar"></span> 
+          <span class="icon-bar"></span> 
+        </button>
+        <a class="navbar-brand">SZ</a>
+      </div>
+  
+      <div class="collapse navbar-collapse" id="blog_navbar_collapse">
+        <ul class="nav navbar-nav navbar-right" >
+          <li><a href="#">link</a></li>
+          <li class="dropdown">
+            <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="ture" aria-expanded="false">dry staff<span class="caret"></span></a>
+            <ul class="dropdown-menu">
+              <li><a href="#">data structure and aglorithms</a></li>
+            </ul>
+          </li>
+          <li><a href="#">link</a></li>
+          <li><a href="#">link</a></li>
+          <li><a href="#">link</a></li>
+        </ul>
+      </div>
+    </div>  
+  </div>
+  {% block big_title %}
+  {% endblock %}
+  <div class="main">
+	  <div class="container">
+	    <div class="row">
+	      <div class="col-md-9"> 
+		      {% block main %}
+		      <h2>这里果然什么都没有！</h2>
+		      {% endblock %}
+	      </div>
+	      <div class="col-md-3 ">
+	        <div class="hidden-xs hidden-sm">
+	          
+	        </div>
+	        <img src="" alt="">
+	        </div>
+	      </div>
+	    </div>
+    </div>
+    
+  </div>
+  <footer class="footer">
+   <div class="container">
+	    <div class="row">
+	      <div class="col-sm-6 col-lg-6">
+	      <h3>勺子的博客</h3>
+	      </div>
+	      <div class="col-sm-6 col-lg-5 col-lg-offset-1">
+	        <div class="row">
+	          <div class="col-xs-6">
+	          <h4>Designer</h4>
+	          </div>
+	          <div class="col-xs-6">
+	          <h4>Generator</h4>
+	          </div>
+	        </div>
+	      </div>
+	    </div>
+	  </div>
+  </footer>
+
+</body>
+</html>
+</head>

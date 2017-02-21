@@ -1,0 +1,30 @@
+{% extends "shaozi_blog/base.html" %}
+{% load static %}
+{% block differnet_css %}
+<link rel="stylesheet" href="{% static 'shaozi_blog/css/style_for_category.css' %}" type="text/css">
+{% endblock %}
+{% block main %}
+<div class="recent_article">
+  <div class="category text-center">
+    <h1>数据结构与算法</h1>
+  </div>
+  <a href="http://www.baidu.com"><h2>文章标题</h2></a>
+  <h5>Post by John Doe, Sep 24, 2015</h5>
+  <span class="label label-default label-lg">Default</span>
+  <span class="label label-primary">Primary</span>
+  <span class="label label-success">Success</span>
+  <span class="label label-info">Info</span>
+  <span class="label label-warning">Warning</span>
+  <span class="label label-danger">Danger</span>
+  <p>而是决心去北京学习。在填写大学志愿之前，文章专门去北京考察了中国两大艺术院校—北京电影学院和中央戏剧学院。回到西安之后，文章不顾父母阻拦，将大学志愿从一本到专科总共八</p>
+  <hr>
+  <a href="http://www.baidu.com"><h2>文章标题</h2></a>
+  <h5>Post by John Doe, Sep 24, 2015</h5>
+  <p>而是决心去北京学习。在填写大学志愿之前，文章专门去北京考察了中国两大艺术院校—北京电影学院和中央戏剧学院。回到西安之后，文章不顾父母阻拦，将大学志愿从一本到专科总共八</p>
+  <hr>
+  <a href="http://www.baidu.com"><h2>文章标题</h2></a>
+  <h5>Post by John Doe, Sep 24, 2015</h5>
+  <p>而是决心去北京学习。在填写大学志愿之前，文章专门去北京考察了中国两大艺术院校—北京电影学院和中央戏剧学院。回到西安之后，文章不顾父母阻拦，将大学志愿从一本到专科总共八</p>
+  <hr>
+</div>
+{% endblock %}

@@ -1,0 +1,20 @@
+  #big_title
+  {
+  background-color: #eee;
+  overflow: hidden;
+  height: 300px;
+  
+  }
+  #big_title h1
+  {
+    margin-top: 60px;
+    font-size: 60px;
+    color: #333;  
+  }
+  #big_title p{
+  margin-top: 15px;
+  font-size: 21px;
+  font-weight: 200px;
+  color: #333;
+  }
+  
