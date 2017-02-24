@@ -14,13 +14,35 @@
   </div>
 </div>
 {% endblock %}
-{% block main %}
 
+{% block main %}
 <div class="recent_article">
+
+{% for article in article_set %}
+  <a href="{% url 'shaozi_blog:article' pk=article.article_id %}"><h2>{{ article.title }}</h2></a>
+  <h5>{{ article.author.name }} , {{ article.submit_date }}</h5>
+  {% if article.language %}
+    <div class="row">
+      <div class="col-xs-10" style="margin-bottom :5px;">
+        {% for color , language in article.lang %}
+          <span class="label label-{{ color }}">{{ language|safe }}</span>
+        {% endfor %}
+      </div>
+    </div>
+  {% endif %}
+  <p>{{ article.description }}</p>
+  <hr>
+{% endfor %}
+    
+  
+  
+  
+  
   <a href="http://www.baidu.com"><h2>文章标题</h2></a>
   <h5>Post by John Doe, Sep 24, 2015</h5>
   <div class="row">
     <div class="col-xs-10" style="margin-bottom: 5px;">
+    
       <span class="label label-default ">Default</span>
       <span class="label label-primary">Primary</span>
       <span class="label label-success">Success</span>

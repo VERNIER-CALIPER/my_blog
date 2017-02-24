@@ -9,8 +9,9 @@ class Articles(models.Model):
     path=models.FileField(upload_to='article/%Y/%m/%d')
     description=models.CharField(max_length=200,null=True)
     category=models.CharField(max_length=40,null=True)
+    language=models.CharField(max_length=50,null=True)
     permission=models.CharField(max_length=10,null=True)
-
+#language firld should be like b:C;g:python;  b mean blue g mean gray
     class meta:
         ordering=['-submit-date']
 

@@ -16,9 +16,9 @@ Including another URLconf
 from django.conf.urls import url,include
 from django.contrib import admin
 from shaozi_blog.views import index
-
+app_name='my_blog'
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    url(r'^$', index),
+    url(r'^$', index,name='index'),
     url(r'^shaozi/',include('shaozi_blog.urls'),name='shaozi'),
 ]

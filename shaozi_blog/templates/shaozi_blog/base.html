@@ -2,26 +2,24 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>blog</title>
-
+{% block head_title %}
+<title>勺子的博客</title>
+{% endblock %}
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 <meta name="generator" content="Bluefish 2.2.7" >
 <meta name="author" content="ss" >
-<meta name="keywords" content="">
-<meta name="description" content="">
+<meta name="keywords" content="勺子 博客">
+<meta name="description" content="勺子的博客">
 <meta name="ROBOTS" content="NOINDEX, NOFOLLOW">
 <meta http-equiv="content-type" content="text/html; charset=UTF-8">
 <meta http-equiv="content-type" content="application/xhtml+xml; charset=UTF-8">
 <meta http-equiv="content-style-type" content="text/css">
 <link rel="stylesheet" href="{% static 'shaozi_blog/css/bootstrap.css' %}"  type="text/css">	
 <link rel="stylesheet" href="{% static 'shaozi_blog/css/base.css' %}" type="text/css">
-{% autoescape off %}
 {% block different_css %} {% endblock %}
-{% endautoescape %}
-<!-- don't sure wether escape is needed -->
 
 </head>
 
@@ -37,21 +35,22 @@
           <span class="icon-bar"></span> 
           <span class="icon-bar"></span> 
         </button>
-        <a class="navbar-brand">SZ</a>
+        <a class="navbar-brand" href="/">勺子</a>
       </div>
   
       <div class="collapse navbar-collapse" id="blog_navbar_collapse">
         <ul class="nav navbar-nav navbar-right" >
-          <li><a href="#">link</a></li>
+         
+          <li><a href="/shaozi/toy/">有趣</a></li>
           <li class="dropdown">
-            <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="ture" aria-expanded="false">dry staff<span class="caret"></span></a>
+            <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="ture" aria-expanded="false">计算机<span class="caret"></span></a>
             <ul class="dropdown-menu">
-              <li><a href="#">data structure and aglorithms</a></li>
+              <li><a href="/shaozi/date_aglo/"><h4>数据结构与算法</h4></a></li>
+              <li><a href="/shaozi/internet/"><h4>计算机网络</h4></a></li>
             </ul>
           </li>
-          <li><a href="#">link</a></li>
-          <li><a href="#">link</a></li>
-          <li><a href="#">link</a></li>
+          <li><a href="/shaozi/notes/">课程笔记</a></li>
+          <li><a href="/shaozi/my_profile/">关于我</a></li>
         </ul>
       </div>
     </div>  
@@ -68,9 +67,8 @@
 	      </div>
 	      <div class="col-md-3 ">
 	        <div class="hidden-xs hidden-sm">
-	          
+	     
 	        </div>
-	        <img src="" alt="">
 	        </div>
 	      </div>
 	    </div>
@@ -86,10 +84,13 @@
 	      <div class="col-sm-6 col-lg-5 col-lg-offset-1">
 	        <div class="row">
 	          <div class="col-xs-6">
-	          <h4>Designer</h4>
+	          <h3>Contributor</h3>
+	          <h4>勺子</h4>
 	          </div>
 	          <div class="col-xs-6">
-	          <h4>Generator</h4>
+	          <h3>Framework</h3>
+	          <h4>Bootstrap</h4>
+	          <h4>Django</h4>
 	          </div>
 	        </div>
 	      </div>
