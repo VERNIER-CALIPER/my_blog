@@ -31,10 +31,22 @@
   border: 0;
   border-top: 3px solid #eee;
     }
-  .recent_article h2{
-  font-size: 30px;
+  .recent_article {
+  min-height: 500px;
   color: #333;
   }
+ 
+  .recent_article h1{
+  text-align: center;
+  }
+  .recent_article h2{
+  font-size: 30px;
+  }
+  .recent_article h2:hover{
+  color: #555;
+  }
+  
+  
   .recent_article h5{
   font-size: 20px;
   color: #333;
@@ -43,6 +55,10 @@
   font-size: 20px;
   color: #333;
   }
+  .recent_article p:hover{
+  color: #444;
+  }
+  
   .recent_article a:hover{
   color: #444;
   text-decoration: none;
@@ -59,6 +75,9 @@
   .footer{
   color: #777;
   }
+  .footer h3:hover,h4:hover{
+  color:#444;
+  }
   
   .vertical_separator{
   width:1px;
@@ -66,4 +85,20 @@
   height: 90%;
   background-color: #e5e5e5;
   
+  }
+  
+  
+  #info_nothing h1{
+  text-align: center;
+  padding: 200px 0;
+  color: #333;
+  text-decoration: none;
+  }
+  #info_nothing a:hover,a:link,a:visited,a:checked{
+  text-decoration: none;
+  }
+
+  #info_nothing h1:hover,h1:visited,h1:link{
+  color: #555;
+  text-decoration: none;
   }

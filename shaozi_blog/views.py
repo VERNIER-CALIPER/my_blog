@@ -19,9 +19,12 @@ def model_lebal_to_bootstrap_style(articles):
                             ' ','&nbsp;')
                     an_article.lang.append(tuple(color_and_lang))
     return
+def model_category_to_chinese(cate):
+    cate_to_html={'toy':'有趣','internet':'计算机网络',
+            'data_aglo':'数据结构与算法','notes':'课程笔记',}
+    return cate_to_html[cate]
 
 def index(request):
-
     recent_articles=models.Articles.objects.all()[0:5]
     if recent_articles.count()!=0:
         model_lebal_to_bootstrap_style(recent_articles)
@@ -31,15 +34,21 @@ def index(request):
 
 
 def category(request,cate):
+    try:
+        cate_chinese=model_category_to_chinese(cate)
+    except KeyError :
+        raise Http404
+
     cate_articles=models.Articles.objects.filter(category__contains=cate)[0:5]
     model_lebal_to_bootstrap_style(cate_articles)
+
     return render(request,
         template_name='shaozi_blog/category.html',
-        context={'article_set':cate_articles,})
+        context={'article_set':cate_articles,'cate':cate_chinese,})
 
 def article(request,pk):
 #the an_article_set is stupid to fit the model_lebal_to_bootstrap_style func
-#and needed to rebuilded
+#and needed  rebuilded
     try:
         an_article_set=models.Articles.objects.filter(article_id=pk)
         model_lebal_to_bootstrap_style(an_article_set)
@@ -50,4 +59,7 @@ def article(request,pk):
     return render(request,
         template_name='shaozi_blog/article.html',
         context={'an_article':an_article_set[0],'content':content})
+
+def profile(request):
+    return render(request,template_name='shaozi_blog/base.html')
 # Create your views here.

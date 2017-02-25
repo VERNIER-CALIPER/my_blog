@@ -3,3 +3,10 @@
   margin-bottom: 40px;
   margin-top: 40px;
   }
+  .category h1{
+  margin:60px 0;
+  }
+  #info_nothing h1:hover{
+  color:#555;
+  
+  }

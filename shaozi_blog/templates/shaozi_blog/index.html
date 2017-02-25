@@ -17,7 +17,7 @@
 
 {% block main %}
 <div class="recent_article">
-
+<h1>最新的文章</h1>
 {% for article in article_set %}
   <a href="{% url 'shaozi_blog:article' pk=article.article_id %}"><h2>{{ article.title }}</h2></a>
   <h5>{{ article.author.name }} , {{ article.submit_date }}</h5>

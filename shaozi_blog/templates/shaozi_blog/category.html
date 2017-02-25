@@ -1,13 +1,36 @@
 {% extends "shaozi_blog/base.html" %}
 {% load static %}
-{% block differnet_css %}
+{% block different_css %}
 <link rel="stylesheet" href="{% static 'shaozi_blog/css/style_for_category.css' %}" type="text/css">
 {% endblock %}
 {% block main %}
 <div class="recent_article">
   <div class="category text-center">
-    <h1>数据结构与算法</h1>
+    <h1>{{ cate }}</h1>
   </div>
+  {% if article_set %}
+    {% for article in article_set %}
+    <a href="{% url 'shaozi_blog:article' pk=article.article_id %}"><h2>{{ article.title }}</h2></a>
+    <h5>{{ article.author.name }} , {{ article.submit_date }}</h5>
+    {% if article.language %}
+      <div class="row">
+        <div class="col-xs-10" style="margin-bottom :5px;">
+          {% for color , language in article.lang %}
+            <span class="label label-{{ color }}">{{ language|safe }}</span>
+          {% endfor %}
+        </div>
+      </div>
+    {% endif %}
+    <p>{{ article.description }}</p>
+    <hr>
+    {% endfor %}
+  {% else %}
+    <a id='info_nothing' class='text-center' href="/" ><h1>这里什么也没有，点我返回主页～</h1></a>
+  {% endif %}
+  
+  
+  
+  
   <a href="http://www.baidu.com"><h2>文章标题</h2></a>
   <h5>Post by John Doe, Sep 24, 2015</h5>
   <div class="row">

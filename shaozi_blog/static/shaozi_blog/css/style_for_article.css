@@ -1,5 +1,6 @@
 .article{
   color: #333;
+  min-height: 500px;
 }
 
 .article h1{
