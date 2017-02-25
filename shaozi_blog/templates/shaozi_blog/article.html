@@ -10,12 +10,28 @@
 onload="PR.prettyPrint()"
 {% endblock %}
 {% block prettyPrint_script %}
-<script src="text/javascript" src="{% static 'shaozi_blog/js/prettify.js' %}"></script>
+<script type="text/javascript" src="{% static 'shaozi_blog/js/prettify.js' %}"></script>
 {% endblock %}
  
 {% block main %}
-  <div class="article">
-    <h1 class="text-center">二叉树遍历</h1>
+  <div class="an_article">
+    <h1 class="text-center">{{ an_article.title }}</h1>  
+    <h2>{{ an_article.author }}{{ an_article.submit_date }} </h2>
+      <div class="row margin_bottom_for_lebal">
+        <div class="col-xs-10">
+        {% for color , lebal in an_article.lang %}
+          <span class="label label-{{ color }} for_block">{{ lebal|safe }}</span>
+        {% endfor %}
+        </div>
+      </div>
+      {% for i in content %}
+        {{ i|safe }}
+      {% endfor %}
+  </div>
+{% endblock %}
+
+
+<!--    <h1 class="text-center">二叉树遍历</h1>
       <h2>Post by John Doe, Sep 24, 2015</h2>
         <div class="row margin_bottom_for_lebal">
           <div class="col-xs-10" >
@@ -29,7 +45,7 @@ onload="PR.prettyPrint()"
        </div>
       <p>而是决心去<strong>北京学习</strong>。在填写大学志愿之前，文章专门去北<span class="text-primary">京考察了中国两大艺术院校—北京电影学院和中央戏剧学院。回到西 </span> 安之后，文章不顾父母阻拦，将大学志愿从一本到专科总共八</p>
       <div class="row">
-        <div class="col-xs-12 "align="center"><img class="img-responsive" src="https://www.w3schools.com/w3images/nature.jpg" alt="图片无法显示，请联系管理员。""></div>
+        <div class="col-xs-12 "align="center"><img class="img-responsive" src="https://www.w3schools.com/w3images/nature.jpg" alt="图片无法显示，请联系管理员。"></div>
       </div>
       <div class="row">
         <div class="well well-lg">
@@ -37,6 +53,5 @@ onload="PR.prettyPrint()"
         </div>
       </div>
     </div>
-  </div>
-{% endblock %}    
+  </div> --> 
 
