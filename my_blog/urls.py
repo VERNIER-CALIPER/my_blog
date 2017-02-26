@@ -15,7 +15,7 @@ Including another URLconf
 """
 from django.conf.urls import url,include
 from django.contrib import admin
-from shaozi_blog.views import index
+from shaozi_blog.views import index,errortest
 app_name='my_blog'
 urlpatterns = [
     url(r'^admin/', admin.site.urls),

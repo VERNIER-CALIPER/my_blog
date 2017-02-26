@@ -39,7 +39,7 @@ def category(request,cate):
     except KeyError :
         raise Http404
 
-    cate_articles=models.Articles.objects.filter(category__contains=cate)[0:5]
+    cate_articles=models.Articles.objects.filter(category__contains=cate)
     model_lebal_to_bootstrap_style(cate_articles)
 
     return render(request,
@@ -62,4 +62,8 @@ def article(request,pk):
 
 def profile(request):
     return render(request,template_name='shaozi_blog/base.html')
+
+#only for test
+def errortest(request):
+    return render(request,template_name='404.html')
 # Create your views here.

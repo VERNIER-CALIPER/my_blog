@@ -25,7 +25,7 @@ SECRET_KEY = 'sil0p3%gklr1_$=6qzjwzv!hw#br9jc)o3h^ezf_1&yf@fckf5'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['127.0.0.1']
 
 
 # Application definition
@@ -67,6 +67,10 @@ TEMPLATES = [
         },
     },
 ]
+
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR,"static"),
+    os.path.join(BASE_DIR,"shaozi_blog"),]
 
 WSGI_APPLICATION = 'my_blog.wsgi.application'
 
