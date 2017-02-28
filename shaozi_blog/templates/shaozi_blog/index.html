@@ -25,7 +25,7 @@
     <div class="row">
       <div class="col-xs-10" style="margin-bottom :5px;">
         {% for color , language in article.lang %}
-          <span class="label label-{{ color }}">{{ language|safe }}</span>
+          <span class="label label-{{ color }} for_block">{{ language|safe }}</span>
         {% endfor %}
       </div>
     </div>

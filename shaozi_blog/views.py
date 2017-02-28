@@ -1,6 +1,8 @@
-from django.shortcuts import render
+from django.shortcuts import render,get_object_or_404
 from shaozi_blog import models
 from django.http import Http404
+
+
 def model_lebal_to_bootstrap_style(articles):
 #transmit color to bootstrap-style for template 
 #this dict to bootstrap is stupied. rebuild it in the future
@@ -15,8 +17,6 @@ def model_lebal_to_bootstrap_style(articles):
                 if a_label !='':
                     color_and_lang=a_label.split(':')
                     color_and_lang[0]=color_to_html[color_and_lang[0]]
-                    color_and_lang[1]=color_and_lang[1].center(6).replace(
-                            ' ','&nbsp;')
                     an_article.lang.append(tuple(color_and_lang))
     return
 def model_category_to_chinese(cate):
@@ -39,7 +39,7 @@ def category(request,cate):
     except KeyError :
         raise Http404
 
-    cate_articles=models.Articles.objects.filter(category__contains=cate)
+    cate_articles=get_object_or_404(models.Category,name=cate).articles_set.all()
     model_lebal_to_bootstrap_style(cate_articles)
 
     return render(request,
@@ -54,7 +54,7 @@ def article(request,pk):
         model_lebal_to_bootstrap_style(an_article_set)
         content=an_article_set[0].path.readlines()
         an_article_set[0].path.close()
-    except (IndexError,FileNotFoundError,AttributeError) :
+    except IndexError :
         raise Http404
     return render(request,
         template_name='shaozi_blog/article.html',

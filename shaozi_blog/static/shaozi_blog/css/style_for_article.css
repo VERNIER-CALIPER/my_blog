@@ -24,6 +24,8 @@ display: block;
 float: left;
 margin-right: 1em;
 margin-top: 0.3em;
+min-width: 80px;
+padding: 0.2em 0.6em 0.2em;
 }
 
 .margin_bottom_for_lebal{

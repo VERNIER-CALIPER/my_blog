@@ -72,6 +72,15 @@
   text-decoration: none;
   }
   
+  .label.for_block {
+  display: block;
+  float: left;
+  margin-right: 1em;
+  margin-top: 0.3em;
+  min-width: 30px;
+  padding: 0.2em 0.6em 0.2em;
+  }
+  
   .footer{
   color: #777;
   }
