@@ -2,9 +2,9 @@ from django.shortcuts import render,get_object_or_404
 from shaozi_blog import models
 from django.http import Http404
 
-
+"""
 def model_lebal_to_bootstrap_style(articles):
-#transmit color to bootstrap-style for template 
+#transmit color to bootstrap-style for template
 #this dict to bootstrap is stupied. rebuild it in the future
     color_to_html={'b':'primary','a':'default','g':'success'
             ,'sb':'info','y':'warining','r':'danger'}
@@ -19,10 +19,26 @@ def model_lebal_to_bootstrap_style(articles):
                     color_and_lang[0]=color_to_html[color_and_lang[0]]
                     an_article.lang.append(tuple(color_and_lang))
     return
-def model_category_to_chinese(cate):
-    cate_to_html={'toy':'有趣','internet':'计算机网络',
-            'data_aglo':'数据结构与算法','notes':'课程笔记',}
-    return cate_to_html[cate]
+"""
+def model_lebal_to_bootstrap_style(articles):
+#add .color_bootstrap attribute to an_article
+    color_to_bootstrap={
+            'NBLUE':'primary',
+            'GRAY':'default',
+            'SBLUE':'info',
+            'YELLOW':'warning',
+            'RED':'danger',
+            'GREEN':'success'
+            }
+    for an_article in articles:
+        if an_article.language.all().count()!=0:
+            all_language=an_article.language.all().count()
+            for a_language in all_language:
+                an_article.lang=(color_to_bootstrap(a_language.color),a_language.name)
+        else:
+            an_article.lang=[]
+
+    return
 
 def index(request):
     recent_articles=models.Articles.objects.all()[0:5]
@@ -34,17 +50,14 @@ def index(request):
 
 
 def category(request,cate):
-    try:
-        cate_chinese=model_category_to_chinese(cate)
-    except KeyError :
-        raise Http404
 
-    cate_articles=get_object_or_404(models.Category,name=cate).articles_set.all()
-    model_lebal_to_bootstrap_style(cate_articles)
+    category=get_object_or_404(models.Category,name=cate)
+    article_set=category.articles_set.all()
+    model_lebal_to_bootstrap_style(article_set)
 
     return render(request,
         template_name='shaozi_blog/category.html',
-        context={'article_set':cate_articles,'cate':cate_chinese,})
+        context={'article_set':article_set,'cate':category.model_cate_to_chinese(),})
 
 def article(request,pk):
 #the an_article_set is stupid to fit the model_lebal_to_bootstrap_style func
