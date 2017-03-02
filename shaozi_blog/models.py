@@ -33,7 +33,7 @@ class Category(models.Model):
             ('notes','some notes'),
             )
 
-    Category_id=models.IntegerField(primary_key=True)
+    category_id=models.IntegerField(primary_key=True)
     name=models.CharField(max_length=40,choices=cate_choice,blank=False,null=False)
     article_num=models.IntegerField(default=0)
     language=models.ManyToManyField(Language)
@@ -41,6 +41,7 @@ class Category(models.Model):
 
     def model_cate_to_chinese(self):
         return Category.cate_to_html[self.name]
+    model_cate_to_chinese.short_description='分类名称'
     def __str__(self):
         return self.name
 
@@ -60,12 +61,12 @@ class Articles(models.Model):
     path=models.FileField(upload_to=get_article_content_path,blank=False)
     description=models.CharField(max_length=200,null=False,blank=True,default='nothing here')
     #contentImage_set
+    def __str__(self):
+        return self.title
 
 #language firld is rebuilded! 
     class meta:
-        ordering=['-submit-date']
-    def __str__(self):
-        return self.title
+        ordering=['-submit_date']
 class Author(models.Model):
     #name of Author can't be blank.
     author_id=models.IntegerField(primary_key=True)
@@ -80,5 +81,5 @@ class ContentImage(models.Model):
 
     def __str__(self):
         return self.articles.article_id
-
+    __str__.short_description='related_article_id'
  #Create your models here.
