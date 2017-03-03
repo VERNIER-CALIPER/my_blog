@@ -20,7 +20,7 @@
 <h1>最新的文章</h1>
 {% for article in article_set %}
   <a href="{% url 'shaozi_blog:article' pk=article.article_id %}"><h2>{{ article.title }}</h2></a>
-  <h5>{{ article.author.name }} , {{ article.submit_date }}</h5>
+  <h5>{{ article.author.name }} , {{ article.time_for_html }}</h5>
   {% if article.language %}
     <div class="row">
       <div class="col-xs-10" style="margin-bottom :5px;">

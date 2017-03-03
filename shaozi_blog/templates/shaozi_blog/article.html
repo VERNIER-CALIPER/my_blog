@@ -16,7 +16,7 @@ onload="PR.prettyPrint()"
 {% block main %}
   <div class="article">
     <h1 class="text-center">{{ an_article.title }}</h1>  
-    <h2>{{ an_article.author }}{{ an_article.submit_date }} </h2>
+    <h2>{{ an_article.author }}{{ an_article.time_for_html }} </h2>
       <div class="row margin_bottom_for_lebal">
         <div class="col-xs-10">
         {% for color , lebal in an_article.lang %}

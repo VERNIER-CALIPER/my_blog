@@ -7,6 +7,7 @@ class ContentImageInline(admin.TabularInline):
 class ArticlesAdmin(admin.ModelAdmin):
     list_display=('article_id','title','submit_date','author',)
     list_display_links=('article_id',)
+    exclude=('article_id',)
     readonly_fields=('article_id',)
     inlines=[ContentImageInline]
 
@@ -17,7 +18,7 @@ class LanguageAdmin(admin.ModelAdmin):
 class CategoryAdmin(admin.ModelAdmin):
     list_display=('category_id','model_cate_to_chinese','article_num')
     list_display_links=('category_id',)
-    readonly_fields=('category_id','article_num')
+    readonly_fields=('category_id','article_num',)
 
 class AuthorAdmin(admin.ModelAdmin):
     list_display=('author_id','name','description')

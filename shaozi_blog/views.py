@@ -31,12 +31,11 @@ def model_lebal_to_bootstrap_style(articles):
             'GREEN':'success'
             }
     for an_article in articles:
-        if an_article.language.all().count()!=0:
-            all_language=an_article.language.all().count()
+        an_article.lang=[]
+        if an_article.language.all().exists():
+            all_language=an_article.language.all()
             for a_language in all_language:
-                an_article.lang=(color_to_bootstrap(a_language.color),a_language.name)
-        else:
-            an_article.lang=[]
+                an_article.lang+=[(color_to_bootstrap[a_language.color],a_language.name)]
 
     return
 
