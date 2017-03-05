@@ -23,7 +23,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = 'sil0p3%gklr1_$=6qzjwzv!hw#br9jc)o3h^ezf_1&yf@fckf5'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['127.0.0.1']
 
@@ -71,7 +71,7 @@ TEMPLATES = [
 
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR,"static"),
-    os.path.join(BASE_DIR,"shaozi_blog"),]
+    os.path.join(BASE_DIR,"shaozi_blog/static"),]
 
 WSGI_APPLICATION = 'my_blog.wsgi.application'
 
@@ -111,7 +111,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'Asia/Shanghai'
 
 USE_I18N = True
 
@@ -122,5 +122,7 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.10/howto/static-files/
-MEDIA_ROOT = '/home/ss/'
+MEDIA_URL = '/article/'
+MEDIA_ROOT = '/home/ss/code/static_for_my_blog_test/'
+STATIC_ROOT = '/home/ss/code/static_for_my_blog_test/static/'
 STATIC_URL = '/static/'
