@@ -2,9 +2,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-{% block head_title %}
-<title>勺子的博客</title>
-{% endblock %}
+<title>{% block head_title %}勺子的博客{% endblock %}</title>
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -12,20 +10,23 @@
 <meta name="generator" content="Bluefish 2.2.7" >
 <meta name="author" content="ss" >
 <meta name="keywords" content="勺子 博客">
-<meta name="description" content="勺子的博客">
+
+<meta name="description" content="{% block description %}勺子的博客{% endblock %}">
+
 <meta name="ROBOTS" content="NOINDEX, NOFOLLOW">
 <meta http-equiv="content-type" content="text/html; charset=UTF-8">
 <meta http-equiv="content-type" content="application/xhtml+xml; charset=UTF-8">
 <meta http-equiv="content-style-type" content="text/css">
-<link rel="stylesheet" href="{% static 'shaozi_blog/css/bootstrap.css' %}"  type="text/css">	
+<link href="//cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+<!--<link rel="stylesheet" href="{% static 'shaozi_blog/css/bootstrap.css' %}"  type="text/css">-->
 <link rel="stylesheet" href="{% static 'shaozi_blog/css/base.css' %}" type="text/css">
 {% block different_css %} {% endblock %}
 
 </head>
 
 <body {% block prettyPrint_onload %}{% endblock %}>
-  <script src="http://cdn.bootcss.com/jquery/3.1.1/jquery.js"></script>
-  <script src="{% static 'shaozi_blog/js/bootstrap.min.js' %}"></script>
+  <script src="//cdn.bootcss.com/jquery/3.1.1/jquery.js"></script>
+  <script src="//cdn.bootcss.com/bootstrap/4.0.0-alpha/js/bootstrap.min.js"></script>
   {% block prettyPrint_script %}{% endblock %}
   <div class="navbar navbar-inverse nomargin">
     <div class="container">
@@ -67,7 +68,18 @@
 	      </div>
 	      <div class="col-md-3 ">
 	        <div class="hidden-xs hidden-sm">
-	     
+	          <div style="width:100%;height:100px;">
+	          </div>
+	          <div class="advertisement">
+	            <a href="http://www.github.com">
+	              <img src="{% static 'shaozi_blog/images/github-logo.png' %}" class="img-thumbnail" alt="图片无法显示">
+	            </a>
+	          </div>
+	          <div class="advertisement">
+	            <a href="http://www.stackoverflow.com">
+	              <img src="{% static 'shaozi_blog/images/stack.jpg' %}" class="img-thumbnail" alt="图片无法显示">
+	            </a>
+	          </div>
 	        </div>
 	        </div>
 	      </div>

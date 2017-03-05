@@ -1,5 +1,10 @@
 {% extends "shaozi_blog/base.html" %}
 {% load static %}
+
+{% block title %}
+{{ cate }}
+{% endblock %}
+
 {% block different_css %}
 <link rel="stylesheet" href="{% static 'shaozi_blog/css/style_for_category.css' %}" type="text/css">
 {% endblock %}

@@ -1,5 +1,13 @@
 {% extends "shaozi_blog/base.html" %}
 {% load static %}
+{% block title %}
+{{ an_article.title }}
+{% endblock %}
+
+{% block description %}
+{{ an_article.description }}
+{% endblock %}
+
 {% block different_css %} 
 <link rel="stylesheet" href="{% static 'shaozi_blog/css/style_for_article.css' %}" type="text/css">
 {% endblock %}
@@ -9,6 +17,7 @@
 {% block prettyPrint_onload %}
 onload="PR.prettyPrint()"
 {% endblock %}
+
 {% block prettyPrint_script %}
 <script type="text/javascript" src="{% static 'shaozi_blog/js/prettify.js' %}"></script>
 {% endblock %}
@@ -16,7 +25,7 @@ onload="PR.prettyPrint()"
 {% block main %}
   <div class="article">
     <h1 class="text-center">{{ an_article.title }}</h1>  
-    <h2>{{ an_article.author }}{{ an_article.time_for_html }} </h2>
+    <h2>{{ an_article.author }} {{ an_article.time_for_html }} </h2>
       <div class="row margin_bottom_for_lebal">
         <div class="col-xs-10">
         {% for color , lebal in an_article.lang %}

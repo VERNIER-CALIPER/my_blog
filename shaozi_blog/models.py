@@ -2,10 +2,10 @@ from django.db import models
 
 def get_article_content_path(instance,filename):
     return 'articles/{0}/{1}'.format(
-            instance.article_id,filename)
+            instance.title,filename)
 def get_article_image_comtent_path(instance,filename):
     return 'articles/{0}/{1}'.format(
-            instance.articles.article_id,filename)
+            instance.articles.title,filename)
 
 class Language(models.Model):
     color_choice=(

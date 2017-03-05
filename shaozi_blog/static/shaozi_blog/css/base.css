@@ -32,7 +32,7 @@
   border-top: 3px solid #eee;
     }
   .recent_article {
-  min-height: 500px;
+  min-height: 700px;
   color: #333;
   }
  
@@ -81,10 +81,21 @@
   padding: 0.2em 0.6em 0.2em;
   }
   
-  .footer{
-  color: #777;
+  .advertisement {
+  width: 100%;
+  height: auto;
+  margin: 60px 0;
   }
-  .footer h3:hover,h4:hover{
+  .advertisement .img-thumbnail {
+  border: none;
+  }
+  .footer{
+   color: #777;
+  }
+  .footer h3 {
+  color: #333;
+  }
+  .footer h4:hover{
   color:#444;
   }
   
@@ -96,7 +107,9 @@
   
   }
   
-  
+  #info_nothing h1{
+  min-height: 750px;
+  }
   #info_nothing h1{
   text-align: center;
   padding: 200px 0;
