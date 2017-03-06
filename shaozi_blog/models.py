@@ -1,10 +1,10 @@
 from django.db import models
 
 def get_article_content_path(instance,filename):
-    return 'articles/{0}/{1}'.format(
+    return 'article/{0}/{1}'.format(
             instance.title,filename)
 def get_article_image_comtent_path(instance,filename):
-    return 'articles/{0}/{1}'.format(
+    return 'article/{0}/{1}'.format(
             instance.articles.title,filename)
 
 class Language(models.Model):
@@ -84,6 +84,6 @@ class ContentImage(models.Model):
     articles=models.ForeignKey(Articles)
 
     def __str__(self):
-        return self.articles.article_id
+        return str(self.articles.article_id)
     __str__.short_description='related_article_id'
  #Create your models here.
