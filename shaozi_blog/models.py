@@ -84,6 +84,6 @@ class ContentImage(models.Model):
     articles=models.ForeignKey(Articles)
 
     def __str__(self):
-        return self.articles.article_id
+        return str(self.articles.article_id)
     __str__.short_description='related_article_id'
  #Create your models here.
