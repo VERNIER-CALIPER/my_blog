@@ -25,7 +25,7 @@ SECRET_KEY = 'sil0p3%gklr1_$=6qzjwzv!hw#br9jc)o3h^ezf_1&yf@fckf5'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['127.0.0.1']
+ALLOWED_HOSTS = ['127.0.0.1','118.89.218.184','www.shao-zi.cn']
 
 
 # Application definition
@@ -51,6 +51,7 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
+ADMINS=[('ShiShuo','xxxrrtt@163.com')]
 ROOT_URLCONF = 'my_blog.urls'
 
 TEMPLATES = [
@@ -70,7 +71,6 @@ TEMPLATES = [
 ]
 
 STATICFILES_DIRS = [
-    os.path.join(BASE_DIR,"static"),
     os.path.join(BASE_DIR,"shaozi_blog/static"),]
 
 WSGI_APPLICATION = 'my_blog.wsgi.application'
@@ -123,6 +123,6 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.10/howto/static-files/
 MEDIA_URL = '/article/'
-MEDIA_ROOT = '/home/ss/code/static_for_my_blog_test/'
-STATIC_ROOT = '/home/ss/code/static_for_my_blog_test/static/'
+MEDIA_ROOT = '/var/www/article/'
+STATIC_ROOT = '/var/www/static'
 STATIC_URL = '/static/'
