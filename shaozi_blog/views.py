@@ -1,4 +1,4 @@
-from django.shortcuts import render,get_object_or_404
+from django.shortcuts import render,get_object_or_404,redirect
 from shaozi_blog import models
 from django.http import Http404
 
@@ -68,9 +68,14 @@ def article(request,pk):
         an_article_set[0].path.close()
     except IndexError :
         raise Http404
+    an_article=an_article_set[0]
     return render(request,
         template_name='shaozi_blog/article.html',
-        context={'an_article':an_article_set[0],'content':content})
+        context={'an_article':an_article,'content':content})
+
+def get_image(request,pk,image):
+    an_article=get_object_or_404(article_id=pk)
+    return redirect('/article/article'+'/'+an_article.title+'/'+image)
 
 def profile(request):
     return render(request,template_name='shaozi_blog/base.html')
