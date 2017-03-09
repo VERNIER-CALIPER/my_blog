@@ -1,11 +1,12 @@
 from django.db import models
+import os
 
 def get_article_content_path(instance,filename):
-    return 'articles/{0}/{1}'.format(
-            instance.title,filename)
+    return 'article/{0}/{1}'.format(
+            instance.tmp_dir,filename)
 def get_article_image_comtent_path(instance,filename):
-    return 'articles/{0}/{1}'.format(
-            instance.articles.title,filename)
+    return 'article/{0}/{1}'.format(
+            instance.tmp_dir,filename)
 
 class Language(models.Model):
     color_choice=(
@@ -49,6 +50,7 @@ class Category(models.Model):
         return self.name
 
 class Articles(models.Model):
+    child_dir='article'
     #author,title and path can't be blank
     article_id=models.AutoField(primary_key=True)
 
@@ -63,7 +65,18 @@ class Articles(models.Model):
 
     path=models.FileField(upload_to=get_article_content_path,blank=False)
     description=models.CharField(max_length=200,null=False,blank=True,default='nothing here')
-    #contentImage_set
+#need rebuild
+    @property
+    def tmp_dir(self):
+        if self._tmp_dir:
+            return self._tmp_dir
+        return
+    @tmp_dir.setter
+    def tmp_dir(self,value):
+        self._tmp_dir=value
+        return self._tmp_dir
+
+   #contentImage_set
     def __str__(self):
         return self.title
     def time_for_html(self):
