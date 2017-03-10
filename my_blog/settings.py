@@ -71,10 +71,7 @@ TEMPLATES = [
 ]
 
 STATICFILES_DIRS = [
-<<<<<<< HEAD
-=======
 #    os.path.join(BASE_DIR,"static"),
->>>>>>> 3730d3bccc433013b881bc811e2b03dad394b317
     os.path.join(BASE_DIR,"shaozi_blog/static"),]
 
 WSGI_APPLICATION = 'my_blog.wsgi.application'
@@ -126,13 +123,7 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.10/howto/static-files/
-<<<<<<< HEAD
-MEDIA_URL = '/article/'
 MEDIA_ROOT = '/var/www/article/'
-STATIC_ROOT = '/var/www/static'
-=======
-MEDIA_ROOT = '/var/www/article'
 MEDIA_URL = '/modia/'
-STATIC_ROOT= '/var/www/static'
->>>>>>> 3730d3bccc433013b881bc811e2b03dad394b317
+STATIC_ROOT= '/var/www/static/'
 STATIC_URL = '/static/'

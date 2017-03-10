@@ -8,5 +8,4 @@ urlpatterns = [
     url(r'^(?P<cate>\w+)/$',views.category , name='category'),
     url(r'^article/(?P<pk>[0-9]+)/$'
          ,views.article,name='article'),
-    url(r'^article/(?P<pk>[0-9]+)/(?P<image>\w+\.\w+)',views.get_image)
 ]

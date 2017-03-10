@@ -1,11 +1,29 @@
 from django.db import models
+import os
+from django.conf import settings
 
 def get_article_content_path(instance,filename):
+<<<<<<< HEAD
     return 'article/{0}/{1}'.format(
             instance.title,filename)
 def get_article_image_comtent_path(instance,filename):
     return 'article/{0}/{1}'.format(
             instance.articles.title,filename)
+=======
+
+    if instance.article_id is not None :
+        return 'article/{0}/{1}'.format(
+                str(instance.article_id),filename)
+
+    return 'article/{0}/{1}'.format(
+            instance.tmp_dir,filename)
+
+def get_article_image_comtent_path(instance,filename):
+
+    if instance.articles.article_id is not None :
+        return 'article/{0}/{1}'.format(
+                str(instance.articles.article_id),filename)
+>>>>>>> af1662806ecd6fcd697af8d8786b1030b37f3745
 
 class Language(models.Model):
     color_choice=(
@@ -49,6 +67,7 @@ class Category(models.Model):
         return self.name
 
 class Articles(models.Model):
+    child_dir='article'
     #author,title and path can't be blank
     article_id=models.AutoField(primary_key=True)
 
@@ -63,13 +82,51 @@ class Articles(models.Model):
 
     path=models.FileField(upload_to=get_article_content_path,blank=False)
     description=models.CharField(max_length=200,null=False,blank=True,default='nothing here')
-    #contentImage_set
+#need rebuild
+    @property
+    def tmp_dir(self):
+        if hasattr(self,'_tmp_dir'):
+            return self._tmp_dir
+        else:
+            self._tmp_dir=self._create_tmpn_dir('article')
+        return self._tmp_dir
+
+    @tmp_dir.setter
+    def tmp_dir(self,value):
+        self._tmp_dir=value
+        return self._tmp_dir
+
+   #contentImage_set
     def __str__(self):
         return self.title
+
+    def _create_tmpn_dir(self,child_dir):
+        """1 child_dir should not start with '/' or end with '/'
+           2 mkdir  MEDIA_ROOT/child_dir/tmpn                """
+
+        if settings.MEDIA_ROOT[-1]=='/':
+            cwd=settings.MEDIA_ROOT+child_dir+'/'
+        else:
+            cwd=settings.MEDIA_ROOT+'/'+child_dir+'/'
+
+        num=0
+        while True:
+            dir_path=os.path.join(cwd,'tmp'+str(num))
+            if not os.path.exists(dir_path):
+                try:
+                    os.makedirs(dir_path)
+                except FileExistsError :
+                    num+=1
+                    continue
+                return os.path.split(dir_path)[1]
+            else :
+                num+=1
+                continue
+
     def time_for_html(self):
         return self.submit_date.strftime('%Y - %m - %d')
     class meta:
-        ordering=['-submit_date']
+        ordering=['submit_date']
 
 class Author(models.Model):
     #name of Author can't be blank.
