@@ -1,6 +1,10 @@
 from django.shortcuts import render,get_object_or_404,redirect
+from django.template import Template
+
 from shaozi_blog import models
 from django.http import Http404
+from django.template import Context
+
 
 """
 def model_lebal_to_bootstrap_style(articles):
@@ -20,6 +24,9 @@ def model_lebal_to_bootstrap_style(articles):
                     an_article.lang.append(tuple(color_and_lang))
     return
 """
+
+
+
 def model_lebal_to_bootstrap_style(articles):
 #add .color_bootstrap attribute to an_article
     color_to_bootstrap={
@@ -47,7 +54,6 @@ def index(request):
                 context={'article_set':recent_articles,})
     return render(request,template_name='shaozi_blog/index.html')
 
-
 def category(request,cate):
 
     category=get_object_or_404(models.Category,name=cate)
@@ -61,21 +67,28 @@ def category(request,cate):
 def article(request,pk):
 #the an_article_set is stupid to fit the model_lebal_to_bootstrap_style func
 #and needed  rebuilded
+#rebuild for loop  in this block to a tag/fountion
     try:
         an_article_set=models.Articles.objects.filter(article_id=pk)
+
         model_lebal_to_bootstrap_style(an_article_set)
+
+        an_article=an_article_set[0]
         content=an_article_set[0].path.readlines()
         an_article_set[0].path.close()
+        flag=0
+        for line in content:
+            if line.lstrip().startswith(b'***'):
+                line=line.replace(b'***',b'   ',1)
+                content[flag]=Template(line).render(Context({'article_id':str(an_article.article_id)}),)
+            flag+=1
+
     except IndexError :
         raise Http404
-    an_article=an_article_set[0]
     return render(request,
         template_name='shaozi_blog/article.html',
         context={'an_article':an_article,'content':content})
 
-def get_image(request,pk,image):
-    an_article=get_object_or_404(article_id=pk)
-    return redirect('/article/article'+'/'+an_article.title+'/'+image)
 
 def profile(request):
     return render(request,template_name='shaozi_blog/base.html')

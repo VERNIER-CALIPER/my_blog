@@ -18,10 +18,13 @@ def replace_tmpn_to_article_id(sender,**kwargs):
         article_id_dir=os.path.join(cwd,str(kwargs['instance'].article_id))
         old_tmp=os.path.join(cwd,kwargs['instance'].tmp_dir)
 
-        os.rename(
-                old_tmp,
-                article_id_dir,
-                )
+
+        if not os.path.exists(article_id_dir):
+            os.mkdir(article_id_dir)
+
+        for file_name in os.listdir(old_tmp):
+            shutil.move(os.path.join(old_tmp,file_name),os.path.join(article_id_dir,file_name))
+        os.rmdir(old_tmp)
 
         init_name=kwargs['instance'].path.name
         kwargs['instance'].path.name=os.path.join(

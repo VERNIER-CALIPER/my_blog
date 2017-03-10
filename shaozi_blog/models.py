@@ -3,7 +3,8 @@ import os
 from django.conf import settings
 
 def get_article_content_path(instance,filename):
-    if hasattr(instance,'article_id'):
+
+    if instance.article_id is not None :
         return 'article/{0}/{1}'.format(
                 str(instance.article_id),filename)
 
@@ -12,12 +13,9 @@ def get_article_content_path(instance,filename):
 
 def get_article_image_comtent_path(instance,filename):
 
-    if hasattr(instance.articles,'article_id'):
+    if instance.articles.article_id is not None :
         return 'article/{0}/{1}'.format(
                 str(instance.articles.article_id),filename)
-
-    return 'article/{0}/{1}'.format(
-            instance.tmp_dir,filename)
 
 class Language(models.Model):
     color_choice=(
@@ -120,7 +118,7 @@ class Articles(models.Model):
     def time_for_html(self):
         return self.submit_date.strftime('%Y - %m - %d')
     class meta:
-        ordering=['-submit_date']
+        ordering=['submit_date']
 
 class Author(models.Model):
     #name of Author can't be blank.
