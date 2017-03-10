@@ -1,48 +1,43 @@
 from django.db.models import F
-import os
 from django.conf import settings
+import os
+import shutil
 #need rebuild
-def create_tmpn_dir(child_dir):
-    """1 child_dir should not start with '/' or end with '/'
-       2 mkdir  MEDIA_ROOT/child_dir/tmpn                """
-
-    if settings.MEDIA_ROOT[-1]=='/':
-        cwd=settings.MEDIA_ROOT+child_dir+'/'
-    else:
-        cwd=settings.MEDIA_ROOT+'/'+child_dir+'/'
-
-    num=0
-    while True:
-        dir_path=os.path.join(cwd,'tmp'+str(num))
-        if not os.path.exists(dir_path):
-            try:
-                os.makedirs(dir_path)
-            except FileExistsError :
-                num+=1
-                continue
-            return os.path.split(dir_path)[1]
-        else :
-            num+=1
-            continue
 
 
-def add_dir_path_to_article(sender,**kwargs):
-    if not kwargs['update_fields']:
-        kwargs['instance'].tmp_dir=create_tmpn_dir('article')
-    return
 
 
 def replace_tmpn_to_article_id(sender,**kwargs):
 #next two if need rebuild repalce 'article' with a commom var
-    if settings.MEDIA_ROOT[-1]=='/':
-        cwd=settings.MEDIA_ROOT+'article'+'/'
-    else:
-        cwd=settings.MEDIA_ROOT+'/'+'article'+'/'
-    old_tmp=os.path.join(cwd,kwargs['instance'].tmp_dir)
-    os.rename(
-            old_tmp,
-            os.path.join(os.path.split(old_tmp)[0],str(kwargs['instance'].article_id))
-            )
+    if kwargs['created']:
+        if settings.MEDIA_ROOT[-1]=='/':
+            cwd=settings.MEDIA_ROOT+'article'+'/'
+        else:
+            cwd=settings.MEDIA_ROOT+'/'+'article'+'/'
+
+        article_id_dir=os.path.join(cwd,str(kwargs['instance'].article_id))
+        old_tmp=os.path.join(cwd,kwargs['instance'].tmp_dir)
+
+        os.rename(
+                old_tmp,
+                article_id_dir,
+                )
+
+        init_name=kwargs['instance'].path.name
+        kwargs['instance'].path.name=os.path.join(
+                os.path.dirname(os.path.dirname(init_name)),
+                os.path.join(str(kwargs['instance'].article_id),os.path.basename(init_name))
+                )
+        for img in kwargs['instance'].contentimage_set.all():
+            init_name=img.name
+            img.name=os.path.join(
+                os.path.dirname(os.path.dirname(init_name)),
+                os.path.join(str(kwargs['instance'].article_id),os.path.basename(init_name))
+                )
+        kwargs['instance'].save()
+
+        return article_id_dir
+
     return
 
 
