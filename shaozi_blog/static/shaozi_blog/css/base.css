@@ -38,6 +38,7 @@
  
   .recent_article h1{
   text-align: center;
+  margin: 60px 0;
   }
   .recent_article h2{
   font-size: 30px;
@@ -49,11 +50,11 @@
   
   .recent_article h5{
   font-size: 20px;
-  color: #333;
+  color: #555;
   }
   .recent_article p{
   font-size: 20px;
-  color: #333;
+  color: #555;
   }
   .recent_article p:hover{
   color: #444;

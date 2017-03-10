@@ -46,6 +46,7 @@ class Category(models.Model):
             ('notes','some notes'),
             )
 
+
     category_id=models.AutoField(primary_key=True)
     name=models.CharField(max_length=40,choices=cate_choice,blank=False,null=False)
     article_num=models.IntegerField(default=0)
